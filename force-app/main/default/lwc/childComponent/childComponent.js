@@ -2,12 +2,12 @@ import { LightningElement, api, track } from 'lwc';
 
 export default class ChildComponent extends LightningElement {
 
-    @track fullName = '';
-    @track gender = '';
-    @track age = '';
-    @track accept = '';
-    @track address = '';
-    @track dob = '';
+    fullName = '';
+    gender = '';
+    age = '';
+    accept = '';
+    address = '';
+    dob = '';
 
 
     reportInputValidity(className) {
@@ -34,26 +34,52 @@ export default class ChildComponent extends LightningElement {
             { label: 'No', value: 'no' },
         ];
     }
-    handleNameChange(event) {
-        this.fullName = event.target.value;
+
+    handleInputChange(event){
+        // console.log(event.target.name)
+        switch (event.target.name) {
+            case 'selectName':
+                this.fullName = event.target.value;
+                break;
+            case 'selectAge':
+                this.age = event.target.value;
+                break;
+            case 'selectAddress':
+                this.address = event.target.value;
+                break;
+            case 'selectGender':
+                this.gender = event.target.value;
+                break;
+            case 'selectDob':
+                this.dob = event.target.value;
+                break;
+            case 'selectTerms':
+                this.accept = event.target.value;
+                break;
+            default:
+                break;
+        }
     }
-    handleGenderChange(event){
-        this.gender = event.target.value;
-    }
-    handleAgeChange(event){
-        this.age = event.target.value;
-    }
-    handleValueChange(event){
-        this.accept = event.target.value;
-    }
-    handleAddressChange(event) {
-        this.address = event.target.value;
-    }
-    handleDobChange(event) {
-        this.dob = event.target.value;
-    }
+    // handleNameChange(event) {
+    //     this.fullName = event.target.value;
+
+    // }
+    // handleGenderChange(event){
+    //     this.gender = event.target.value;
+    // }
+    // handleAgeChange(event){
+    //     this.age = event.target.value;
+    // }
+    // handleValueChange(event){
+    //     this.accept = event.target.value;
+    // }
+    // handleAddressChange(event) {
+    //     this.address = event.target.value;
+    // }
+    // handleDobChange(event) {
+    //     this.dob = event.target.value;
+    // }
     
-      
 
 
     handleSubmit() {
