@@ -1,25 +1,25 @@
 <template>
     <div class="slds-m-around_large slds-grid slds-wrap slds-grid_align-spread">
         <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
-          <lightning-input class="input" name="selectName" label="Full Name" value={fullName} onchange={handleInputChange} required message="sasdsd"></lightning-input>
-          <lightning-input type="number" name="selectAge" class="input" value={age} label="Age" required placeholder="Enter Your Age..." onchange={handleInputChange}></lightning-input>
+          <lightning-input class="input" name="fullName" label="Full Name" value={eventObject.fullName} onchange={handleInputChange} required message="sasdsd"></lightning-input>
+          <lightning-input type="number" name="age" class="input" value={eventObject.age} label="Age" required placeholder="Enter Your Age..." onchange={handleInputChange}></lightning-input>
         </div>
         <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
-          <lightning-textarea name="selectAddress" class="input slds-p-vertical_small" required onchange={handleInputChange} value={address} label="Address" placeholder="type address here..."></lightning-textarea>
+          <lightning-textarea name="address" class="input slds-p-vertical_small" required onchange={handleInputChange} value={eventObject.address} label="Address" placeholder="type address here..."></lightning-textarea>
         </div>
         <div class="slds-m-top_large slds-grid slds-col slds-size_2-of-2 slds-wrap">
           <lightning-combobox
-                name="selectGender"
+                name="gender"
                 label="Gender"
-                value={gender} required  class="input slds-p-horizontal_medium slds-col slds-size_1-of-2"
+                value={eventObject.gender} required  class="input slds-p-horizontal_medium slds-col slds-size_1-of-2"
                 placeholder="Select your Gender"
                 options={genderOptions}
                 onchange={handleInputChange} ></lightning-combobox>
-          <lightning-input required class="input slds-col slds-size_1-of-2 slds-p-horizontal_medium" value={dob} onchange={handleInputChange} type="date" name="selectDob" label="Date of Birth" placeholder="Birthday Here..."></lightning-input>
-          <lightning-radio-group name="selectTerms"
+          <lightning-input required class="input slds-col slds-size_1-of-2 slds-p-horizontal_medium" value={eventObject.dob} onchange={handleInputChange} type="date" name="dob" label="Date of Birth" placeholder="Birthday Here..."></lightning-input>
+          <lightning-radio-group name="accept"
                               label="Do you Accept the terms & conditions?"
                               options={options}
-                              value={accept}
+                              value={eventObject.accept}
                               onchange={handleInputChange}
                               required class="input slds-col slds-size_1-of-2 slds-p-horizontal_medium"
                               type="radio"></lightning-radio-group>
