@@ -3,14 +3,15 @@ import { LightningElement, track } from 'lwc';
 export default class ParentComponent extends LightningElement {
     
 
-    @track formData = {};
+    @track formDataList = [];
 
     handleFormSubmit(event) {
-        this.formData = event.detail;
+        const newformData = event.detail;
+        this.formDataList.push(newformData);
     }
 
     handleParentSubmit() {
-        console.log(JSON.parse(JSON.stringify(this.formData)));
+        console.log(JSON.parse(JSON.stringify(this.formDataList)));
     }
  
 }

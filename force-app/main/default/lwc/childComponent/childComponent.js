@@ -4,8 +4,8 @@ export default class ChildComponent extends LightningElement {
 
     @track fullName = '';
     @track gender = '';
-    @track age;
-    @track accept;
+    @track age = '';
+    @track accept = false;
 
     get genderOptions() {
         return [
@@ -35,7 +35,7 @@ export default class ChildComponent extends LightningElement {
     }
 
     handleSubmit() {
-        const formData = {
+        const newformData = {
             fullName: this.fullName,
             gender: this.gender,
             age: this.age,
@@ -43,22 +43,16 @@ export default class ChildComponent extends LightningElement {
         };
         //using lwc evemt-details
         const event = new CustomEvent('formsubmit', {
-            detail: formData
+            detail: newformData
         });
         this.dispatchEvent(event);
-    }
-    
 
-    // handleFormSubmit() {
-    //     const event = new CustomEvent('formsubmit', {
-    //         detail: { 
-    //             name: this.fullName,
-    //             age: this.age,
-    //             gender: this.gender,
-    //             accept: this.accept
-    //          }
-    //     });
-    //     this.dispatchEvent(event);
-    // }
+        //reset the form back for next submission
+        this.fullName = '';
+        this.gender = '';
+        this.age = '';
+        this.accept = false;
+    
+    }
     
 } 

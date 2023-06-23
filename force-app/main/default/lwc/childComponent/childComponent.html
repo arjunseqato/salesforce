@@ -8,7 +8,7 @@
                 placeholder="Select your Gender"
                 options={genderOptions}
                 onchange={handleGenderChange} ></lightning-combobox>
-        <lightning-input type="number" value="age" label="Age" required placeholder="Enter Your Age..." onchange={handleAgeChange}></lightning-input>
+        <lightning-input type="number" value={age} label="Age" required placeholder="Enter Your Age..." onchange={handleAgeChange}></lightning-input>
         <lightning-radio-group name="radioGroup"
                               label="Do you Accept the terms & conditions?"
                               options={options}
