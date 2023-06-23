@@ -1,5 +1,5 @@
 <template>
-    <!-- <div class="slds-m-around_large">
+    <div class="slds-m-around_large">
         <lightning-input label="Full Name" value={fullName} onchange={handleNameChange} required></lightning-input>
         <lightning-combobox
                 name="selectGender"
@@ -16,14 +16,7 @@
                               onchange={handleValueChange}
                                 required
                               type="radio"></lightning-radio-group>
+       <lightning-button label="Submit" onclick={handleSubmit} variant="brand"></lightning-button>
     
-    </div> -->
-
-    <lightning-card title="Child Form">
-      <div class="slds-p-horizontal_medium">
-          <lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
-          <lightning-input label="Email" value={email} onchange={handleEmailChange}></lightning-input>
-      </div>
-    </lightning-card>
-
+    </div>
   </template>

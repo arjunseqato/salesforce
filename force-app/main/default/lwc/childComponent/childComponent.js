@@ -1,68 +1,53 @@
 import { LightningElement, api, track } from 'lwc';
 
 export default class ChildComponent extends LightningElement {
-    // @api message;
 
-    // @api childFunction(name){
-    //     this.message = name
-    //     alert(name);
-    // }
-    // handleClick(){
-    //     const event = new CustomEvent('btnclick', {
-    //         detail: { 
-    //             key: '001ABCD',
-    //             value: 'Arjun'
-    //          }
-    //     });
-    //     this.dispatchEvent(event);
-    // }
+    @track fullName = '';
+    @track gender = '';
+    @track age;
+    @track accept;
 
+    get genderOptions() {
+        return [
+            { label: 'Male', value: 'male' },
+            { label: 'Female', value: 'female' },
+            { label: 'Other', value: 'other' },
+        ];
+    }
+    get options() {
+        return [
+            { label: 'Yes', value: 'yes' },
+            { label: 'No', value: 'no' },
+        ];
+    }
 
+    handleNameChange(event) {
+        this.fullName = event.target.value;
+    }
+    handleGenderChange(event){
+        this.gender = event.target.value;
+    }
+    handleAgeChange(event){
+        this.age = event.target.value;
+    }
+    handleValueChange(event){
+        this.accept = event.target.value;
+    }
 
-
-
-    // @api formData;
-    // connectedCallback() {
-    //     console.log(JSON.parse(JSON.stringify(this.formData)));
-    // }
-    //  fullName = '';
-    //  gender = '';
-    //  age;
-    //  accept;
-
-    // get genderOptions() {
-    //     return [
-    //         { label: 'Male', value: 'male' },
-    //         { label: 'Female', value: 'female' },
-    //         { label: 'Other', value: 'other' },
-    //     ];
-    // }
-    // get options() {
-    //     return [
-    //         { label: 'Yes', value: 'yes' },
-    //         { label: 'No', value: 'no' },
-    //     ];
-    // }
-
-    // handleNameChange(event) {
-    //     this.formData.fullName = event.target.value;
-    //     // console.log(JSON.parse(JSON.stringify(this.formData)));
-    // }
-    // handleGenderChange(event){
-    //     this.formData.gender = event.target.value;
-    //     // console.log(JSON.parse(JSON.stringify(this.formData)));
-    //     // console.log(this.gender);
-    // }
-    // handleAgeChange(event){
-    //     this.formData.age = event.target.value;
-    //     // console.log(JSON.parse(JSON.stringify(this.formData)));
-    //     // console.log(this.age);
-    // }
-    // handleValueChange(event){
-    //     this.formData.accept = event.target.value;
-    //     // console.log(JSON.parse(JSON.stringify(this.formData)));
-    //     // console.log(this.accept);
-    // }
+    handleSubmit() {
+        const formData = {
+            fullName: this.fullName,
+            gender: this.gender,
+            age: this.age,
+            accept: this.accept
+        };
+        //using lwc evemt-details
+        const event = new CustomEvent('formsubmit', {
+            detail: formData
+        });
+        this.dispatchEvent(event);
+    }
+    
 
     // handleFormSubmit() {
     //     const event = new CustomEvent('formsubmit', {
@@ -76,27 +61,4 @@ export default class ChildComponent extends LightningElement {
     //     this.dispatchEvent(event);
     // }
     
-
-
-
-
-    @track name;
-    @track email;
-
-    handleNameChange(event) {
-        this.name = event.target.value;
-    }
-
-    handleEmailChange(event) {
-        this.email = event.target.value;
-    }
-
-    handleSubmit() {
-        const formData = {
-            name: this.name,
-            email: this.email
-        };
-        this.dispatchEvent(new CustomEvent('formsubmit', { detail: formData }));
-    }
-
 } 

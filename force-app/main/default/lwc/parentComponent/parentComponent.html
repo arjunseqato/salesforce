@@ -1,17 +1,10 @@
 <template>
-    <!-- <lightning-card>
-        <div class="slds-m-around_large">
-            <c-child-component form-data = {formData} onformsubmit = {handleFormSubmit}></c-child-component>
-        </div>
-        <lightning-button label="Submit" value="Submit" onclick={handleSubmit}> 
-        </lightning-button>
-    </lightning-card> -->
     <lightning-card title="Parent Component">
         <div class="slds-p-horizontal_medium">
             <c-child-component onformsubmit={handleFormSubmit}></c-child-component>
         </div>
         <div class="slds-p-horizontal_medium">
-            <lightning-button label="Submit" onclick={handleParentSubmit} variant="brand"></lightning-button>
+            <lightning-button label="Console Form Details" onclick={handleParentSubmit} variant="brand"></lightning-button>
         </div>
     </lightning-card>
 </template>
