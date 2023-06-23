@@ -1,0 +1,36 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_large">
+            <h1 class="slds-text-heading_large">Hello</h1>
+    
+            <lightning-input label="Full Name" required value={inputText} onchange={handleChange}>
+    
+            </lightning-input>
+            <p>{inputText}</p>
+    
+            <p>
+                {company}
+            </p>
+            <lightning-button label="Submit" value="submit" onclick={handleSubmit}>
+    
+            </lightning-button>
+        </div>
+        <!-- <div class="slds-m-around_large">
+            <template for:each={result} for:item="contact">
+                <p key={contact.Id}>
+                    {contact.Id}
+                </p>
+            </template>
+        </div> -->
+    
+        <div class="slds-m-around_large slds-grid slds-wrap">
+            <div class="slds-col slds-size_4-of-12 slds-theme_shade"> This card takes 4/12</div>
+            <div class="slds-col slds-size_8-of-12 slds-theme_alert-texture slds-align_absolute-center"> This card takes 8/12</div>
+            <div class="slds-col slds-size_1-of-2 slds-theme_shade"> This card takes 1/2</div>
+            <div class="slds-col slds-size_1-of-2 slds-theme_alert-texture slds-align_absolute-center"> This card takes 1/2</div>
+        </div>
+    </lightning-card>
+    
+
+</template>
+

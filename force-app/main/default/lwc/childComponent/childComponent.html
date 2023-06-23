@@ -1,0 +1,29 @@
+<template>
+    <!-- <div class="slds-m-around_large">
+        <lightning-input label="Full Name" value={fullName} onchange={handleNameChange} required></lightning-input>
+        <lightning-combobox
+                name="selectGender"
+                label="Gender"
+                value={gender} required
+                placeholder="Select your Gender"
+                options={genderOptions}
+                onchange={handleGenderChange} ></lightning-combobox>
+        <lightning-input type="number" value="age" label="Age" required placeholder="Enter Your Age..." onchange={handleAgeChange}></lightning-input>
+        <lightning-radio-group name="radioGroup"
+                              label="Do you Accept the terms & conditions?"
+                              options={options}
+                              value={accept}
+                              onchange={handleValueChange}
+                                required
+                              type="radio"></lightning-radio-group>
+    
+    </div> -->
+
+    <lightning-card title="Child Form">
+      <div class="slds-p-horizontal_medium">
+          <lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
+          <lightning-input label="Email" value={email} onchange={handleEmailChange}></lightning-input>
+      </div>
+    </lightning-card>
+
+  </template>
