@@ -1,22 +1,31 @@
 <template>
-    <div class="slds-m-around_large">
-        <lightning-input label="Full Name" value={fullName} onchange={handleNameChange} required></lightning-input>
-        <lightning-combobox
+    <div class="slds-m-around_large slds-grid slds-wrap slds-grid_align-spread">
+        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+          <lightning-input class="input" label="Full Name" value={fullName} onchange={handleNameChange} required message="sasdsd"></lightning-input>
+          <lightning-input type="number" class="input" value={age} label="Age" required placeholder="Enter Your Age..." onchange={handleAgeChange}></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+          <lightning-textarea name="adress" class="input slds-p-vertical_small" required onchange={handleAddressChange} value={address} label="Address" placeholder="type address here..."></lightning-textarea>
+        </div>
+        <div class="slds-m-top_large slds-grid slds-col slds-size_2-of-2 slds-wrap">
+          <lightning-combobox
                 name="selectGender"
                 label="Gender"
-                value={gender} required
+                value={gender} required  class="input slds-p-horizontal_medium slds-col slds-size_1-of-2"
                 placeholder="Select your Gender"
                 options={genderOptions}
                 onchange={handleGenderChange} ></lightning-combobox>
-        <lightning-input type="number" value={age} label="Age" required placeholder="Enter Your Age..." onchange={handleAgeChange}></lightning-input>
-        <lightning-radio-group name="radioGroup"
+          <lightning-input required class="input slds-col slds-size_1-of-2 slds-p-horizontal_medium" value={dob} onchange={handleDobChange} type="date" name="dob" label="Date of Birth" placeholder="Birthday Here..."></lightning-input>
+          <lightning-radio-group name="radioGroup"
                               label="Do you Accept the terms & conditions?"
                               options={options}
                               value={accept}
                               onchange={handleValueChange}
-                                required
+                              required class="input slds-col slds-size_1-of-2 slds-p-horizontal_medium"
                               type="radio"></lightning-radio-group>
-       <lightning-button label="Submit" onclick={handleSubmit} variant="brand"></lightning-button>
-    
+        </div>
+        
+       <lightning-button label="Submit" class="slds-col slds-m-top_medium slds-size_1-of-2 slds-p-horizontal_medium" onclick={handleSubmit} variant="brand"></lightning-button>
+      
     </div>
   </template>

@@ -6,5 +6,40 @@
         <div class="slds-p-horizontal_medium">
             <lightning-button label="Console Form Details" onclick={handleParentSubmit} variant="brand"></lightning-button>
         </div>
+
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={formDataList}
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+
+        <div class="slds-m-around_large">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Acceptance</th>
+                        <th>Address</th>
+                        <th>Date of Birth</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={formDataList} for:item="row" for:index="i"> 
+                        <tr key={row.i}>
+                            <td>{row.fullName}</td>
+                            <td>{row.gender}</td>
+                            <td>{row.age}</td>
+                            <td>{row.accept}</td>
+                            <td>{row.address}</td>
+                            <td>{row.dob}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
     </lightning-card>
 </template>
