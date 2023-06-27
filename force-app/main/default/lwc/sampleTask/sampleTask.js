@@ -43,13 +43,18 @@ export default class SampleTask extends LightningElement {
             });
             this.amount ='';
             this.date = '';
-            // console.log(JSON.parse(JSON.stringify(this.rows)));
+            console.log(JSON.parse(JSON.stringify(this.rows)));
         }
     }
 
-    deleteRow(rowId){
-        
+    deleteRow(event) {
+        const rowId = parseInt(event.target.dataset.id);
+        this.rows.splice(rowId, 1);  //removing the element from array
+        this.rows = [...this.rows]; //updating the rows array to reflect in template
+        console.log(JSON.parse(JSON.stringify(this.rows)));
     }
+    
+    
 
       
 

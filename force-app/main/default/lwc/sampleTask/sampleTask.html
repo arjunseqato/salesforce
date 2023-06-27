@@ -11,11 +11,12 @@
                 <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded input" required  type="date" name="date" label="Date" value={date} placeholder="Select the date here..." onchange={handleChangeDate}></lightning-input>
                 <lightning-button class="slds-col slds-size_2-of-12 slds-col--padded slds-align-middle" required label="Add row" onclick={addRow}></lightning-button>
             </div>
-            <template for:each={rows} for:item="row">
-                <div key={row.id} class="slds-m-around_large slds-grid slds-wrap slds-glutters">
+            <template for:each={rows} for:item="row" for:index="counter">
+                <div key={row.counter} class="slds-m-around_large slds-grid slds-wrap slds-glutters">
                     <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded" type="number" name="amount" label="Enter Amount in $" value={row.amount} formatter="currency" step="0.01"></lightning-input>
                     <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded"  type="date" name="date" value={row.date} label="Date" placeholder="Select the date here..."></lightning-input>
-                    <lightning-button class="slds-col slds-size_2-of-12 slds-col--padded slds-align-middle" label="Delete row" onclick={deleteRow}></lightning-button>
+                    <!-- passing index: counter through data-id -->
+                    <lightning-button class="slds-col slds-size_2-of-12 slds-col--padded slds-align-middle" label="Delete row" onclick={deleteRow} data-id={counter}></lightning-button>
                 </div>
             </template>
         </template>
