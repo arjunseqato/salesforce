@@ -13,8 +13,8 @@
             </div>
             <template for:each={rows} for:item="row" for:index="counter">
                 <div key={row.counter} class="slds-m-around_large slds-grid slds-wrap slds-glutters">
-                    <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded" type="number" name="amount" label="Enter Amount in $" value={row.amount} formatter="currency" step="0.01"></lightning-input>
-                    <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded"  type="date" name="date" value={row.date} label="Date" placeholder="Select the date here..."></lightning-input>
+                    <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded" onchange={editAmount} type="number" name="amount" label="Enter Amount in $" data-id={counter} value={row.amount} formatter="currency" step="0.01"></lightning-input>
+                    <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded" onchange={editDate} type="date" name="date" value={row.date} data-id={counter} label="Date" placeholder="Select the date here..."></lightning-input>
                     <!-- passing index: counter through data-id -->
                     <lightning-button class="slds-col slds-size_2-of-12 slds-col--padded slds-align-middle" label="Delete row" onclick={deleteRow} data-id={counter}></lightning-button>
                 </div>

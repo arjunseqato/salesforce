@@ -7,6 +7,8 @@ export default class SampleTask extends LightningElement {
     amount = '';
     date = '';
     rowId = 0;
+    editedAmount = '';
+    editedDate = '';
 
     reportInputValidity(className) {
         let error = 0;
@@ -54,7 +56,17 @@ export default class SampleTask extends LightningElement {
         console.log(JSON.parse(JSON.stringify(this.rows)));
     }
     
-    
+    editAmount(event) {
+        this.editAmount = event.target.value;
+        const rowId = parseInt(event.target.dataset.id);
+        this.rows[rowId].amount = this.editAmount;
+        // console.log(JSON.parse(JSON.stringify(this.rows)));
+    }
+    editDate(event) {
+        this.editDate = event.target.value;
+        const rowId = parseInt(event.target.dataset.id);
+        this.rows[rowId].date = this.editDate;
+    }
 
       
 
