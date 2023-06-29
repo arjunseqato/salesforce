@@ -1,5 +1,21 @@
 import { LightningElement } from 'lwc';
 
+const columns = [
+    { label: 'Amount', fieldName: 'amount', type: 'currency', editable: true },
+    { label: 'Date', fieldName: 'date', type: 'date', editable: true },
+    {
+        label: 'Actions',
+        type: 'button',
+        typeAttributes: {
+          iconName: 'utility:delete',
+          label: 'Delete',
+          name: 'delete',
+          title: 'Delete',
+          variant: 'destructive',
+        }
+      }
+];
+
 export default class SampleTask extends LightningElement {
     
     hide = true;
@@ -9,6 +25,10 @@ export default class SampleTask extends LightningElement {
     rowId = 0;
     editedAmount = '';
     editedDate = '';
+
+    // data=[];
+    columns = columns;
+    rowOffset = 0;
 
     reportInputValidity(className) {
         let error = 0;
@@ -46,29 +66,45 @@ export default class SampleTask extends LightningElement {
             this.amount ='';
             this.date = '';
             console.log(JSON.parse(JSON.stringify(this.rows)));
+            this.rows = [...this.rows];
+            // console.log(JSON.parse(JSON.stringify(this.data)));
         }
     }
 
-    deleteRow(event) {
-        const rowId = parseInt(event.target.dataset.id);
-        this.rows.splice(rowId, 1);  //removing the element from array
-        this.rows = [...this.rows]; //updating the rows array to reflect in template
-        console.log(JSON.parse(JSON.stringify(this.rows)));
-    }
-    
-    editAmount(event) {
-        this.editAmount = event.target.value;
-        const rowId = parseInt(event.target.dataset.id);
-        this.rows[rowId].amount = this.editAmount;
-        // console.log(JSON.parse(JSON.stringify(this.rows)));
-    }
-    editDate(event) {
-        this.editDate = event.target.value;
-        const rowId = parseInt(event.target.dataset.id);
-        this.rows[rowId].date = this.editDate;
-    }
+    // deleteRow(event) {
+    //     const rowId = parseInt(event.target.dataset.id);
+    //     this.rows.splice(rowId, 1);  //removing the element from array
+    //     this.rows = [...this.rows]; //updating the rows array to reflect in template
+    //     console.log(JSON.parse(JSON.stringify(this.rows)));
+    //     this.rows = [...this.rows];
+    //     // console.log(JSON.parse(JSON.stringify(this.data)));
 
-      
+    // }
+    
+    // editAmount(event) {
+    //     this.editAmount = event.target.value;
+    //     const rowId = parseInt(event.target.dataset.id);
+    //     this.rows[rowId].amount = this.editAmount;
+    //     // console.log(JSON.parse(JSON.stringify(this.rows)));
+    // }
+    // editDate(event) {
+    //     this.editDate = event.target.value;
+    //     const rowId = parseInt(event.target.dataset.id);
+    //     this.rows[rowId].date = this.editDate;
+    // }
+
+    handleRowAction(event) {
+        // console.log('action', JSON.parse(JSON.stringify(event.detail.action)));
+        // console.log('row', JSON.parse(JSON.stringify(event.detail.row)));
+        const rowId = event.detail.row.id;
+        const rowIndex = this.rows.findIndex(row => row.id === rowId);
+        // console.log(rowIndex);
+        if (event.detail.action.name === 'delete' && rowIndex !== -1) {
+            this.rows.splice(rowIndex, 1);  //removing the element from array
+            this.rows = [...this.rows]; //updating the rows array to reflect in template
+            console.log(JSON.parse(JSON.stringify(this.rows)));
+        }
+      } 
 
     handleSubmit(){
         this.rows.forEach(item => {

@@ -11,17 +11,29 @@
                 <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded input" required  type="date" name="date" label="Date" value={date} placeholder="Select the date here..." onchange={handleChangeDate}></lightning-input>
                 <lightning-button class="slds-col slds-size_2-of-12 slds-col--padded slds-align-middle" required label="Add row" onclick={addRow}></lightning-button>
             </div>
-            <template for:each={rows} for:item="row" for:index="counter">
+            <!-- <template for:each={rows} for:item="row" for:index="counter">
                 <div key={row.counter} class="slds-m-around_large slds-grid slds-wrap slds-glutters">
                     <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded" onchange={editAmount} type="number" name="amount" label="Enter Amount in $" data-id={counter} value={row.amount} formatter="currency" step="0.01"></lightning-input>
-                    <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded" onchange={editDate} type="date" name="date" value={row.date} data-id={counter} label="Date" placeholder="Select the date here..."></lightning-input>
+                    <lightning-input class="slds-col slds-size_4-of-12 slds-col--padded" onchange={editDate} type="date" name="date" value={row.date} data-id={counter} label="Date" placeholder="Select the date here..."></lightning-input> -->
                     <!-- passing index: counter through data-id -->
-                    <lightning-button class="slds-col slds-size_2-of-12 slds-col--padded slds-align-middle" label="Delete row" onclick={deleteRow} data-id={counter}></lightning-button>
+                    <!-- <lightning-button class="slds-col slds-size_2-of-12 slds-col--padded slds-align-middle" label="Delete row" onclick={deleteRow} data-id={counter}></lightning-button>
                 </div>
-            </template>
+            </template> -->
         </template>
         <div class="slds-m-around_large slds-box slds-theme_shade">
             <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+        </div>
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={rows}
+                    show-row-number-column
+                    row-number-offset={rowOffset}
+                    suppress-bottom-bar
+                    onrowaction={handleRowAction}
+                    columns={columns}>
+            </lightning-datatable>
+
         </div>
     </lightning-card>
 </template>
