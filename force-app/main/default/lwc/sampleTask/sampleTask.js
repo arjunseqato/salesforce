@@ -23,8 +23,6 @@ export default class SampleTask extends LightningElement {
     amount = '';
     date = '';
     rowId = 0;
-    editedAmount = '';
-    editedDate = '';
 
     // data=[];
     columns = columns;
@@ -59,7 +57,7 @@ export default class SampleTask extends LightningElement {
         const valid = this.reportInputValidity('.input');
         if(valid) {
             this.rows.push({
-                id: this.rowId++,
+                position: this.rowId++,
                 amount: this.amount,
                 date: this.date
             });
@@ -93,12 +91,32 @@ export default class SampleTask extends LightningElement {
     //     this.rows[rowId].date = this.editDate;
     // }
 
+    
+    //inline cell edit functions in datatable is written using  oncellchange event.
+
+      handleCellChange(event) {
+        this.rows = [...this.rows];
+        const updatedValues = event.detail.draftValues;
+        const editedRowId = parseInt(updatedValues[0].id.replace('row-', ''));
+        if(updatedValues[0].amount) {
+            this.rows[editedRowId].amount = updatedValues[0].amount;
+            
+        }
+        if(updatedValues[0].date) {
+            this.rows[editedRowId].date = updatedValues[0].date;
+        }
+        console.log(JSON.parse(JSON.stringify(this.rows)));
+        this.rows = [...this.rows];
+      }
+      
+
+    //button click function in datatable is written using  onrowaction event.
     handleRowAction(event) {
         // console.log('action', JSON.parse(JSON.stringify(event.detail.action)));
         // console.log('row', JSON.parse(JSON.stringify(event.detail.row)));
-        const rowId = event.detail.row.id;
-        const rowIndex = this.rows.findIndex(row => row.id === rowId);
-        // console.log(rowIndex);
+        const rowId = event.detail.row.position;
+        const rowIndex = this.rows.findIndex(row => row.position === rowId);
+        console.log(JSON.parse(JSON.stringify(rowId)));
         if (event.detail.action.name === 'delete' && rowIndex !== -1) {
             this.rows.splice(rowIndex, 1);  //removing the element from array
             this.rows = [...this.rows]; //updating the rows array to reflect in template
