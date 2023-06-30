@@ -1,0 +1,70 @@
+<template>
+    <lightning-card title="Parent Component">
+        <div class="slds-m-around_large slds-grid slds-wrap slds-glutters">
+            <lightning-input 
+                class="input slds-col slds-size_1-of-2  slds-col--padded" 
+                label="Full Name"
+                name="name"
+                value={eventObject.fullName} 
+                onchange={handleChanges} 
+                pattern="^(?!.*\s)[a-zA-Z\s]+$"  
+                required
+            ></lightning-input>
+            <lightning-combobox
+                class="input slds-col slds-size_1-of-2  slds-col--padded"
+                name="gender"
+                label="Gender"
+                value={eventObject.gender}
+                required
+                placeholder="Select your Gender"
+                options={genderOptions}
+                onchange={handleChanges}
+            ></lightning-combobox>
+            <lightning-input
+                class="input slds-col slds-size_1-of-2  slds-col--padded"
+                type="number"
+                name="age"
+                value="eventObject.age"
+                label="Age"
+                required
+                placeholder="Enter Your Age..."
+                onchange={handleChanges}
+            ></lightning-input>
+            <lightning-textarea 
+                class="input address slds-col slds-size_1-of-2  slds-col--padded"
+                value={eventObject.address} 
+                name="address"
+                message-when-value-missing="Thiss field is required."
+                required
+                onblur={handleAddressChange}
+                label="Residential Address" 
+                placeholder="Enter Address here"
+            ></lightning-textarea>
+            <lightning-input 
+                class="input slds-col slds-size_1-of-2  slds-col--padded" 
+                label="Email Address" 
+                value={eventObject.email}
+                name="email"
+                pattern="[A-Za-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$"
+                type="email" 
+                onchange={handleChanges} 
+                required
+            ></lightning-input>
+            <lightning-input 
+                class="input slds-col slds-size_1-of-2  slds-col--padded" 
+                label="URL" 
+                value={eventObject.url}
+                name="url"
+                type="url" 
+                onchange={handleChanges} 
+                required
+            ></lightning-input>
+            <br>
+            <lightning-button
+                label="Submit"
+                onclick={handleSubmit}
+                variant="brand"
+            ></lightning-button>
+        </div>
+    </lightning-card>
+</template>

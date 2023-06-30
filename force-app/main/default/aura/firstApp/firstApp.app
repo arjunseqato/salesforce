@@ -5,5 +5,6 @@
     <!-- <c:wiresample></c:wiresample> -->
     <!-- <c:querySelector></c:querySelector> -->
     <!-- <c:sampleTask></c:sampleTask> -->
-    <c:fileUpload></c:fileUpload>
+    <!-- <c:fileUpload></c:fileUpload> -->
+    <c:formValidation></c:formValidation>
 </aura:application>	
