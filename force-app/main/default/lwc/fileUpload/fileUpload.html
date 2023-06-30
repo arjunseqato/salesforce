@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <lightning-tabset>
+            <lightning-tab label="Item One">
+                <lightning-card>
+                    <div class="slds-m-around_large">
+                        <lightning-file-upload
+                        label="Attach receipt"
+                        name="fileUploader"
+                        accept={acceptedFormats}
+                        record-id={myRecordId}
+                        onuploadfinished={handleUploadFinished}
+                        multiple
+                    >
+                    </lightning-file-upload>
+                    </div>
+                </lightning-card>
+            </lightning-tab>
+            <lightning-tab label="Item Two" title="2nd tab extended title">
+                <lightning-card>
+                    Two Content !
+                </lightning-card>
+            </lightning-tab>
+            <lightning-tab label="Item Three">
+                <lightning-card>
+                    Three Content !
+                </lightning-card>
+            </lightning-tab>
+        </lightning-tabset>
+    </lightning-card>
+</template>

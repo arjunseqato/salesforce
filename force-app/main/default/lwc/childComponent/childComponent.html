@@ -1,5 +1,6 @@
 <template>
-    <div class="slds-m-around_large">
+    <lightning-card>
+      <div class="slds-m-around_large">
         <lightning-input label="Full Name" value={fullName} onchange={handleNameChange} required></lightning-input>
         <lightning-combobox
                 name="selectGender"
@@ -17,6 +18,6 @@
                                 required
                               type="radio"></lightning-radio-group>
        <lightning-button label="Submit" onclick={handleSubmit} variant="brand"></lightning-button>
-    
     </div>
+    </lightning-card>
   </template>
