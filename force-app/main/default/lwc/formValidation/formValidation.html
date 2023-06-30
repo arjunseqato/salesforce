@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="Parent Component">
+    <lightning-card>
         <div class="slds-m-around_large slds-grid slds-wrap slds-glutters">
             <lightning-input 
                 class="input slds-col slds-size_1-of-2  slds-col--padded" 
@@ -61,6 +61,7 @@
             ></lightning-input>
             <br>
             <lightning-button
+                class="slds-col slds-size_1-of-2  slds-col--padded" 
                 label="Submit"
                 onclick={handleSubmit}
                 variant="brand"
