@@ -24,7 +24,8 @@ export default class SampleTask extends LightningElement {
     date = '';
     rowId = 0;
 
-    // data=[];
+    // data=[];  commented
+    //second comment
     columns = columns;
     rowOffset = 0;
 
